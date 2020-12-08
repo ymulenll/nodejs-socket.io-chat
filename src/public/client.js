@@ -12,7 +12,6 @@ if (username) {
   msgerUsername.innerHTML = `Hola <strong>${username}</strong> 👋`;
 }
 
-
 // cargar mensajes guardados
 fetch("/messages")
   .then((res) => res.json())
