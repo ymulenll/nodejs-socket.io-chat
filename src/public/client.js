@@ -39,7 +39,7 @@ function addMessage(payload) {
     user.username,
     isMe ? "right" : "left",
     text,
-    new Date(createdAt)
+    createdAt
   );
 }
 
@@ -49,7 +49,7 @@ function appendMessage(name, side, text, date) {
       <div class="msg-bubble">
         <div class="msg-info">
           <div class="msg-info-name">${name || "Invitado"}</div>
-          <div class="msg-info-time">${formatDate(date || new Date())}</div>
+          <div class="msg-info-time" datetime="${date}"></div>
         </div>
         <div class="msg-text">${text}</div>
       </div>
@@ -58,13 +58,12 @@ function appendMessage(name, side, text, date) {
 
   msgerChat.insertAdjacentHTML("beforeend", msgHTML);
   msgerChat.scrollTop += 500;
+
+  const msgerTime = document.querySelectorAll(".msg-info-time");
+  timeago.render(msgerTime, "es");
 }
 
 // Utils
 function get(selector, root = document) {
   return root.querySelector(selector);
-}
-
-function formatDate(date) {
-  return timeago.format(date, "es");
 }
