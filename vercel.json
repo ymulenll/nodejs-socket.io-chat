@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "env": {
+    "MONGODB_CONNECTION": "@mongodb-connection",
+    "PORT": "80"
+  },
+  "builds": [
+    {
+      "src": "/src/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/server.js"
+    }
+  ]
+}
