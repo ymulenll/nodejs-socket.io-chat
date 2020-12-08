@@ -1,14 +1,17 @@
+const msgerForm = get(".msger-inputarea");
+const msgerInput = get(".msger-input");
+const msgerChat = get(".msger-chat");
+const msgerUsername = get(".msger-header-username")
+
 const socket = io();
 
 const username = prompt("Entre su nombre de usuario: ");
 
 if (username) {
   socket.emit("set-username", username);
+  msgerUsername.innerHTML = `Hola <strong>${username}</strong> 👋`;
 }
 
-const msgerForm = get(".msger-inputarea");
-const msgerInput = get(".msger-input");
-const msgerChat = get(".msger-chat");
 
 // cargar mensajes guardados
 fetch("/messages")
